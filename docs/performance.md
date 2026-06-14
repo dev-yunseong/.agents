@@ -1,4 +1,4 @@
-# agents/docs/performance.md
+# User-Level Performance Guidance
 
 ## Performance Rules
 

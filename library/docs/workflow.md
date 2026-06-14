@@ -18,7 +18,8 @@ Non-trivial work:
 - cross-module refactor
 - user-facing workflow change
 
-Non-trivial work requires the `writing-plan` skill.
+Non-trivial work requires a concise plan. Use the `writing-plan` skill when it
+is installed.
 
 ## End-to-End Flow
 
@@ -26,7 +27,7 @@ Non-trivial work requires the `writing-plan` skill.
 2. Read project context, relevant code, tests, and recent changes.
 3. Link or create an issue. Non-trivial development branches require one.
 4. Create a branch using the issue number.
-5. Use the `writing-plan` skill to write a concise implementation plan.
+5. Write a concise implementation plan; use `writing-plan` when installed.
 6. Identify architecture impact, tradeoffs, risks, and rollback.
 7. Implement the smallest coherent change.
 8. Follow `testing.md`; use an installed testing skill when available.

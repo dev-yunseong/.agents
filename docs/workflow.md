@@ -1,71 +1,47 @@
-# ~/.agents/docs/workflow.md
+# User-Level Workflow
 
-## Required Workflow
+## Purpose
 
-Before major implementation:
-1. understand the problem
-2. create a short implementation plan
-3. explain architecture decisions
-4. explain tradeoffs and risks
-5. implement incrementally
+Keep work incremental, reviewable, and aligned with existing architecture.
 
-Use:
-- `writing-plan` skill when a plan file is useful
-- structured reasoning
-- step-by-step execution
+## Non-Trivial Work
 
----
+Before editing:
 
-## Planning Rules
+1. Confirm goal, scope, constraints, and current behavior.
+2. Inspect relevant code, tests, configuration, and recent changes.
+3. State a concise implementation plan.
+4. Explain architecture decisions, tradeoffs, and risk points.
 
-Plans should include:
-- goal
-- affected components
-- risk points
-- validation strategy
+Use the `writing-plan` skill when a persistent plan file is useful or required
+by project instructions.
 
-Keep plans concise.
+During implementation:
 
----
+1. Make the smallest coherent change.
+2. Preserve established patterns unless the task requires changing them.
+3. Keep unrelated cleanup out of scope.
+4. Validate incrementally, with depth proportional to risk and blast radius.
+5. Review the complete diff before handoff.
 
-## Implementation Rules
+## Decision Rules
 
-Prefer:
-- incremental changes
-- localized refactoring
-- explicit reasoning
-- minimal side effects
+- Add abstractions only when they remove demonstrated complexity or match an
+  established pattern.
+- Prefer deterministic behavior and explicit dependencies.
+- Prefer reversible changes for high-risk behavior.
+- Never hide failed, skipped, or unavailable validation.
+- Stop before destructive or high-impact ambiguous actions that lack approval.
 
-Avoid:
-- giant rewrites
-- unrelated refactors
-- speculative abstraction
-- architecture changes without explanation
+## Communication
 
----
+- Explain why before implementation details.
+- State tradeoffs, risks, validation performed, and anything not verified.
+- Keep responses concise.
+- Prefer file references or focused excerpts over large code dumps.
 
-## Communication Rules
+## Outcome
 
-Always:
-- explain WHY first
-- explain tradeoffs
-- respect existing architecture
-
-Avoid:
-- code dumping
-- overengineering
-- unnecessary verbosity
-
----
-
-## Final Principle
-
-Optimize for:
-- maintainability
-- clarity
-- scalability
-- reliability
-
-Not:
-- temporary hacks
-- complexity for its own sake
+Optimize for maintainability, clarity, scalability, reliability, and real-world
+operation. Avoid temporary hacks, speculative complexity, and large rewrites
+without explicit need.

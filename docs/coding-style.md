@@ -1,4 +1,4 @@
-# agents/docs/coding-style.md
+# User-Level Coding Style
 
 ## Coding Style
 
@@ -37,6 +37,7 @@ Names should reveal intent immediately.
 Avoid:
 - Manager
 - Helper
+- Utils
 - Temp
 - Data
 - Thing
@@ -60,23 +61,12 @@ Avoid:
 - unnecessary rewrites
 - unrelated cleanup
 - aesthetic-only refactors
+- broad formatting churn
 
----
+## Comments
 
-## Performance
-
-Optimize only when justified.
-
-Prefer:
-- readability first
-- targeted optimization
-- measurable improvements
-
-Avoid:
-- premature optimization
-- unreadable micro-optimizations
-
----
+Comments should explain constraints or non-obvious decisions. Do not repeat what
+the code already states.
 
 ## Final Rule
 
