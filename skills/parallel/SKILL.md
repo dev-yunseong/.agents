@@ -33,7 +33,26 @@ description: >
    - If 2+ safe tracks remain, keep the coordination task locally and spawn worker subagents for the implementation tracks.
    - Keep blocking architecture or decomposition work in the main agent. Delegate bounded execution, not the critical planning step.
 
-4. Define ownership precisely for every worker.
+4. Select the lowest model sufficient for each task.
+   - Respect an explicit user model choice first.
+   - Use `gpt-5.4-mini` for deterministic, low-risk work:
+     - mechanical file moves or renames with explicit mappings
+     - formatting, inventory, search, and focused validation
+     - small isolated edits with clear acceptance criteria
+   - Use `gpt-5.4` for normal implementation:
+     - bounded feature or bug work in a known architecture
+     - multi-file changes with clear ownership
+     - tests, migrations, and integration work requiring moderate reasoning
+   - Inherit the main agent's default frontier model for high-risk or ambiguous work:
+     - architecture and decomposition
+     - security-sensitive changes
+     - broad refactors or unclear behavioral contracts
+     - conflict resolution and final integration review
+   - When uncertain between tiers, choose the stronger model.
+   - Do not override the model when the task is too coupled to classify confidently; inherit the parent model.
+   - Model selection never relaxes ownership, validation, or review requirements.
+
+5. Define ownership precisely for every worker.
    - Give each worker:
      - the exact issue or subtask
      - the files or module boundaries it owns
@@ -44,12 +63,12 @@ description: >
      - tests run
      - unresolved risks or assumptions
 
-5. Integrate deliberately.
+6. Integrate deliberately.
    - While workers run, do non-overlapping work locally: shared analysis, follow-up issue reads, integration prep, or validation setup.
    - Review returned diffs before making further edits.
    - If worker outputs collide in practice, resolve conflicts in the main agent instead of bouncing the same file between workers.
 
-6. Validate at the right level.
+7. Validate at the right level.
    - Prefer targeted tests per track first, then run broader validation after integration.
    - If one parallel track fails, do not block the others from landing unless the failure invalidates shared assumptions.
 
@@ -59,4 +78,4 @@ description: >
 - Never split work across workers when the write boundary is vague.
 - Prefer issue-level parallelism over file-level micro-splitting.
 - When a single issue contains multiple independent concerns, decompose into explicit subtracks before spawning workers.
-- Always explain the chosen partition briefly before spawning workers.
+- Always explain the chosen partition and model assignment briefly before spawning workers.
