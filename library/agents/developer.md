@@ -10,7 +10,10 @@ description: >
 
 ## Assess first
 
-- **Too large** (4+ independent concerns): create sub-issues via `gh issue create --title "..." --body "Part of #<N>"`, report the numbers, stop.
+- **Too large** (4+ independent concerns): write each sub-issue body to a
+  Markdown file, create it via `gh issue create --title "..." --body-file
+  /tmp/sub-issue-body.md`, verify it with `gh issue view`, report the numbers,
+  remove the temporary files, and stop.
 - **Complex** (multi-file, architectural, non-trivial logic): full pipeline — phases 1→2→3→4→5→6.
 - **Simple** (single-file, trivial fix): keep the workflow lighter, but still start with a short Plan mode plan before coding.
 
@@ -64,16 +67,31 @@ description: >
 git add <files>
 git commit -m "<summary>"
 git push -u origin HEAD
-gh pr create --title "<≤70 chars>" --body "## Summary
+```
+
+Write this content to `/tmp/pr-body.md`:
+
+```markdown
+## Summary
 - <bullet>
 
 ## Test plan
 - [ ] <what was tested>
 
-Closes #<N>"
+Closes #<N>
 ```
 
-Return the PR URL.
+Create and verify the PR using the file. Do not pass generated multiline content
+through `--body`:
+
+```bash
+gh pr create --title "<≤70 chars>" --body-file /tmp/pr-body.md
+gh pr view <PR-number-or-URL> --json title,body,url
+```
+
+Confirm the remote title and body match the source file, remove the temporary
+file, then return the PR URL. If content is malformed, fix and verify it before
+reporting completion.
 
 ## Rules
 

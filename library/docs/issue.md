@@ -31,6 +31,24 @@ An issue is ready when it has:
 ## Validation Notes
 ```
 
+## Safe Creation
+
+Write generated issue content to a Markdown file before invoking GitHub CLI.
+Pass the file with `--body-file`; do not interpolate multiline content into
+`--body`. This prevents shell quoting, command substitution, and newline damage.
+
+Use a temporary file unless the repository requires the issue draft to be
+tracked:
+
+```bash
+gh issue create --title "<title>" --body-file /tmp/issue-body.md
+```
+
+After creation, read the remote issue back with `gh issue view` and confirm the
+title and body match the source file. Fix the remote issue before continuing if
+content is missing, truncated, or malformed. Remove temporary files after
+successful verification.
+
 ## Lifecycle
 
 1. Create or refine issue.

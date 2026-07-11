@@ -38,6 +38,23 @@ Use Conventional Commit format:
 Closes #123
 ```
 
+## Safe Creation
+
+Write generated PR content to a Markdown file before invoking GitHub CLI. Pass
+the file with `--body-file`; do not interpolate multiline content into `--body`.
+This prevents shell quoting, command substitution, and newline damage.
+
+Use a temporary file unless the repository requires the PR draft to be tracked:
+
+```bash
+gh pr create --title "<title>" --body-file /tmp/pr-body.md
+```
+
+After creation, read the remote PR back with `gh pr view` and confirm the title
+and body match the source file. Fix the remote PR before reporting completion if
+content is missing, truncated, or malformed. Remove temporary files after
+successful verification.
+
 ## Review Rules
 
 - Keep PR focused on one coherent outcome.

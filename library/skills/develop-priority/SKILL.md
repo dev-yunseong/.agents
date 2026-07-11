@@ -16,7 +16,11 @@ description: >
    - preserve any existing done marker formatting
    - append ` (in progress by <agent_id>)` to the issue title if no in-progress marker is already present
    - use the CLI program and model name as `<agent_id>`, for example `codex:gpt-5.4`
-5. **Scope check**: if issue has 4+ independent concerns → create sub-issues (`gh issue create --title "..." --body "Part of #<N>"`), add to priority doc, report numbers, stop.
+5. **Scope check**: if issue has 4+ independent concerns → write each sub-issue
+   body to a Markdown file, create it with `gh issue create --title "..."
+   --body-file /tmp/sub-issue-body.md`, verify the remote title and body with
+   `gh issue view`, remove the temporary files, add the issues to the priority
+   doc, report numbers, and stop.
 6. Invoke `developer` agent with: issue number + full body, relevant `CLAUDE.md` context, and handoff decisions.
 
 ## Rules
