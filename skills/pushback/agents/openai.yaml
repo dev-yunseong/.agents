@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pushback"
+  short_description: "Challenge weak decisions without inventing faults"
+  default_prompt: "Use $pushback to challenge this decision and demand a better-supported alternative."

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 import re
+from collections import Counter
 from pathlib import Path
 
 URL_REGEX = re.compile(r"https?://[^\s)]+")
-CODE_BLOCK_REGEX = re.compile(r"```.*?```", re.DOTALL)
+FENCE_OPEN_REGEX = re.compile(r"^(\s{0,3})(`{3,}|~{3,})(.*)$")
 HEADING_REGEX = re.compile(r"^(#{1,6})\s+(.*)", re.MULTILINE)
 BULLET_REGEX = re.compile(r"^\s*[-*+]\s+", re.MULTILINE)
 
@@ -38,7 +39,47 @@ def extract_headings(text):
 
 
 def extract_code_blocks(text):
-    return CODE_BLOCK_REGEX.findall(text)
+    """Line-based fenced code block extractor.
+
+    Handles ``` and ~~~ fences with variable length (CommonMark: closing
+    fence must use same char and be at least as long as opening). Supports
+    nested fences (e.g. an outer 4-backtick block wrapping inner 3-backtick
+    content).
+    """
+    blocks = []
+    lines = text.split("\n")
+    i = 0
+    n = len(lines)
+    while i < n:
+        m = FENCE_OPEN_REGEX.match(lines[i])
+        if not m:
+            i += 1
+            continue
+        fence_char = m.group(2)[0]
+        fence_len = len(m.group(2))
+        open_line = lines[i]
+        block_lines = [open_line]
+        i += 1
+        closed = False
+        while i < n:
+            close_m = FENCE_OPEN_REGEX.match(lines[i])
+            if (
+                close_m
+                and close_m.group(2)[0] == fence_char
+                and len(close_m.group(2)) >= fence_len
+                and close_m.group(3).strip() == ""
+            ):
+                block_lines.append(lines[i])
+                closed = True
+                i += 1
+                break
+            block_lines.append(lines[i])
+            i += 1
+        if closed:
+            blocks.append("\n".join(block_lines))
+        # Unclosed fences are silently skipped — they indicate malformed markdown
+        # and including them would cause false-positive validation failures.
+    return blocks
 
 
 def extract_urls(text):
@@ -51,6 +92,12 @@ def extract_paths(text):
 
 def count_bullets(text):
     return len(BULLET_REGEX.findall(text))
+
+
+def extract_inline_codes(text):
+    text_without_fences = re.sub(r"^```[\s\S]*?^```", "", text, flags=re.MULTILINE)
+    text_without_fences = re.sub(r"^~~~[\s\S]*?^~~~", "", text_without_fences, flags=re.MULTILINE)
+    return re.findall(r"`([^`]+)`", text_without_fences)
 
 
 # ---------- Validators ----------
@@ -104,6 +151,22 @@ def validate_bullets(orig, comp, result):
         result.add_warning(f"Bullet count changed too much: {b1} -> {b2}")
 
 
+def validate_inline_codes(orig, comp, result):
+    c1 = Counter(extract_inline_codes(orig))
+    c2 = Counter(extract_inline_codes(comp))
+
+    if c1 != c2:
+        lost = set(c1.keys()) - set(c2.keys())
+        added = set(c2.keys()) - set(c1.keys())
+        for code, count in c1.items():
+            if code in c2 and c2[code] < count:
+                lost.add(f"{code} (lost {count - c2[code]} of {count} occurrences)")
+        if lost:
+            result.add_error(f"Inline code lost: {lost}")
+        if added:
+            result.add_warning(f"Inline code added: {added}")
+
+
 # ---------- Main ----------
 
 
@@ -118,6 +181,7 @@ def validate(original_path: Path, compressed_path: Path) -> ValidationResult:
     validate_urls(orig, comp, result)
     validate_paths(orig, comp, result)
     validate_bullets(orig, comp, result)
+    validate_inline_codes(orig, comp, result)
 
     return result
 
