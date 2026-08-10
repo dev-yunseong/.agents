@@ -12,6 +12,12 @@ defaults.
 
 - Use the `caveman` skill for communication.
 - Preserve user changes and avoid unrelated edits.
+- Before non-trivial work in a workspace that contains child repositories,
+  discover every `AGENTS.md` that applies to each repository in scope. Read the
+  repository-level file and every more-specific file along the paths that may
+  be changed, then read all instruction documents those files require. Repeat
+  this check separately for every child repository; do not assume the parent
+  workspace instructions replace repository-local instructions.
 - Follow `~/.agents/docs/workflow.md` for non-trivial work.
 - Follow `~/.agents/docs/coding-style.md` for code changes.
 - Apply `~/.agents/docs/performance.md` only when performance is relevant.
