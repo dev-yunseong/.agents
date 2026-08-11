@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Task Prompt"
+  short_description: "Turn a task request into a ready-to-use prompt"
+  default_prompt: "Use $write-task-prompt to turn my request into an executable prompt."
