@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manage Agent Instructions"
+  short_description: "Maintain AGENTS.md and linked instruction files"
+  default_prompt: "Use $manage-agent-instructions to update these agent instructions cleanly."
