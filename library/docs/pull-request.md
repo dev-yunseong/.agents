@@ -15,11 +15,14 @@ PR should let reviewer understand intent, verify evidence, and identify risk wit
 
 ## Title
 
-Use Conventional Commit format:
+Use Conventional Commit format with a Korean summary:
 
 ```text
-<type>(<optional-scope>): <imperative summary>
+<type>(<optional-scope>): <한글 요약>
 ```
+
+Write the body in Korean as well. Keep the template headings, code identifiers,
+API names, CLI commands, and error strings in their original form.
 
 ## Body Template
 
@@ -37,6 +40,27 @@ Use Conventional Commit format:
 
 Closes #123
 ```
+
+## Metadata
+
+Set assignee, label, and milestone when creating the PR, not afterwards. An
+unassigned or unlabeled PR does not appear in the boards and filters the team
+uses to find work, so it stalls without anyone noticing.
+
+- **Assignee** — whoever is responsible for landing it. Use `--assignee @me`
+  when that is you.
+- **Label** — at minimum the one matching the change type.
+- **Milestone or project** — when the repository tracks work that way.
+- **Reviewer** — request explicitly rather than relying on default rules.
+
+```bash
+gh pr create --title "<title>" --body-file /tmp/pr-body.md \
+  --assignee @me --label fix --reviewer <handle>
+```
+
+Read the repository's existing labels with `gh label list` before guessing.
+Creating a label that duplicates an existing one with different wording splits
+the boards it was meant to feed.
 
 ## Safe Creation
 

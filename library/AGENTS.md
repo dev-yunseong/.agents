@@ -22,5 +22,9 @@ For tracked Git work, follow:
 - `.agents/docs/commit.md`
 - `.agents/docs/pull-request.md`
 
+For published releases, follow:
+
+- `.agents/docs/release.md`
+
 Use project-local skills when installed and applicable. Skill instructions
 define their own triggers, formats, and output paths.
