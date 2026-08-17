@@ -32,37 +32,8 @@ Use the same types defined in [`branch.md`](branch.md).
 - Reference issue in footer when repository automation requires it.
 - Do not mix unrelated behavior, formatting, and refactoring.
 - Do not commit secrets, generated noise, or local-only configuration.
-
-## Line Endings
-
-A repository stores text with LF. Carry a `.gitattributes` from the first
-commit:
-
-```text
-* text=auto eol=lf
-
-*.cmd text eol=crlf
-*.bat text eol=crlf
-```
-
-`text=auto` stores text as LF in the repository and `eol=lf` checks it out as
-LF. Windows batch files are the exception: stored as LF, restored as CRLF on
-checkout, because `cmd.exe` needs CRLF to run them. `init-project` installs this
-file. Without it `core.autocrlf` decides, and its default converts nothing on
-Linux or macOS.
-
-When a repository predates the rule, add the file and renormalize the index in
-the same commit:
-
-```bash
-git add --renormalize .
-```
-
-That commit changes line endings and nothing else. Do not mix it with behavior
-or refactoring, state the affected file count in the body, and record its hash
-in `.git-blame-ignore-revs` when blame history matters. The working tree keeps
-its old line endings until the next checkout, so a clean `git status` after
-renormalizing is expected.
+- Keep a line-ending renormalization in its own commit. Follow
+  [`line-endings.md`](line-endings.md).
 
 ## Body
 

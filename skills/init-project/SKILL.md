@@ -57,7 +57,7 @@ Use `skill-load` separately for optional skills and agents.
      changing line-ending rules a project already made.
    - When the repository has commits, run `git add --renormalize .` so existing
      CRLF blobs become LF, and report how many files changed.
-   - `.agents/docs/commit.md` states the rule this enforces.
+   - `.agents/docs/line-endings.md` states the rule this enforces.
 11. Validate:
    - all links from `AGENTS.md` resolve
    - all expected docs exist
