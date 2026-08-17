@@ -18,6 +18,10 @@ defaults.
   be changed, then read all instruction documents those files require. Repeat
   this check separately for every child repository; do not assume the parent
   workspace instructions replace repository-local instructions.
+- Use the `parallel` skill for development work and run it wide: split the work
+  into as many tracks with disjoint write scopes as it holds, and spawn a
+  subagent for each. Serial is the exception, not the default. Take it only when
+  fewer than two safe tracks exist, and say which it was and why.
 - Follow `~/.agents/docs/workflow.md` for non-trivial work.
 - Follow `~/.agents/docs/coding-style.md` for code changes.
 - Apply `~/.agents/docs/performance.md` only when performance is relevant.
