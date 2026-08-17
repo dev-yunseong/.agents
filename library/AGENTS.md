@@ -22,6 +22,9 @@ For tracked Git work, follow:
 - `.agents/docs/commit.md`
 - `.agents/docs/pull-request.md`
 
+Follow `.agents/docs/line-endings.md` when adding `.gitattributes`, normalizing
+line endings, or reviewing a diff where every line changed.
+
 For published releases, follow:
 
 - `.agents/docs/release.md`

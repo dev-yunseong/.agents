@@ -32,6 +32,8 @@ Use the same types defined in [`branch.md`](branch.md).
 - Reference issue in footer when repository automation requires it.
 - Do not mix unrelated behavior, formatting, and refactoring.
 - Do not commit secrets, generated noise, or local-only configuration.
+- Keep a line-ending renormalization in its own commit. Follow
+  [`line-endings.md`](line-endings.md).
 
 ## Body
 
