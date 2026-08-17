@@ -9,15 +9,15 @@ Each commit should explain one coherent change and remain safe to review or reve
 Use Conventional Commits:
 
 ```text
-<type>(<optional-scope>): <imperative summary>
+<type>(<optional-scope>): <한글 요약>
 ```
 
 Examples:
 
 ```text
-feat(auth): add session timeout
-fix(api): handle empty upstream response
-docs: document local test setup
+feat(auth): 세션 만료 기능 추가
+fix(api): 빈 업스트림 응답 처리
+docs: 로컬 테스트 방법 문서화
 ```
 
 Use the same types defined in [`branch.md`](branch.md).
@@ -25,7 +25,8 @@ Use the same types defined in [`branch.md`](branch.md).
 ## Rules
 
 - Keep subject at 50 characters or fewer when practical.
-- Use imperative present tense.
+- Write the summary after `<type>: ` in Korean. Leave code identifiers, API
+  names, CLI commands, and error strings in their original form.
 - Do not end subject with a period.
 - Describe why in body when motivation is not obvious.
 - Reference issue in footer when repository automation requires it.
@@ -37,10 +38,10 @@ Use the same types defined in [`branch.md`](branch.md).
 Add a body when change has non-obvious constraints or tradeoffs:
 
 ```text
-fix(cache): preserve stale values during refresh
+fix(cache): 새로고침 중 기존 캐시 값 유지
 
-Concurrent refreshes previously cleared readable values. Keep stale data
-until replacement succeeds so callers retain deterministic fallback behavior.
+동시에 새로고침이 겹치면 읽을 수 있던 값까지 비웠다. 교체가 성공할 때까지
+이전 값을 남겨 호출부가 예측 가능한 대체 동작을 유지하게 한다.
 
 Refs #123
 ```

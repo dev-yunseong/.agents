@@ -12,19 +12,22 @@ narrative belongs in the pull request; planning belongs in the issue.
 
 ## Body Template
 
+Write the notes in Korean. Keep code identifiers, API names, CLI commands, and
+error strings in their original form.
+
 ```markdown
-<one-line summary>
+한 줄 요약.
 
-## Changed
-- user-visible change
+## 변경
+- 사용자가 체감하는 변화
 
-## Fixed
-- corrected defect
+## 수정
+- 고친 결함
 
-## Note
-- behavior that differs from the previous version
+## 주의
+- 이전 버전과 달라져 미리 알아야 할 것
 
-Full changes: #123
+전체 변경: #123
 ```
 
 Drop any heading with no content. When fewer than about three items changed,
