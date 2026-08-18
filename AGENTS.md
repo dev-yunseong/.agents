@@ -11,6 +11,9 @@ defaults.
 ## Required Behavior
 
 - Use the `caveman` skill for communication.
+- Do not abbreviate. Write terms, names, and identifiers out in full every
+  time, including ones already defined earlier in the conversation or in a
+  file. Brevity comes from cutting filler, never from shortening a name.
 - Preserve user changes and avoid unrelated edits.
 - Before non-trivial work in a workspace that contains child repositories,
   discover every `AGENTS.md` that applies to each repository in scope. Read the
