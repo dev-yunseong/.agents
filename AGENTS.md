@@ -15,13 +15,17 @@ defaults.
   time, including ones already defined earlier in the conversation or in a
   file. Brevity comes from cutting filler, never from shortening a name.
 - Never coin a Korean word for a technical term. Keep `pulse`, `branch`,
-  `wiring`, `screen`, `capability`, `anchor` and the like in English, in
-  backticks, wherever they appear — Korean prose, issue bodies, pull request
-  descriptions, code comments. `판독`, `갈래`, `배선` and their kin are banned
-  even when a repository already contains them; matching an existing file's
-  wording is the only exception. This is not an instruction to write more
-  Korean: the point is to stop inventing words, not to raise the Korean ratio,
-  so leave English where English reads naturally and mix the two as normal.
+  `wiring`, `screen`, `capability`, `anchor` and the like in English wherever
+  they appear — Korean prose, issue bodies, pull request descriptions, code
+  comments. `판독`, `갈래`, `배선` and their kin are banned even when a
+  repository already contains them; matching an existing file's wording is the
+  only exception. This is not an instruction to write more Korean: the point is
+  to stop inventing words, not to raise the Korean ratio, so leave English where
+  English reads naturally and mix the two as normal.
+- Use backticks only for what is actually code: paths, commands, file names,
+  flags, identifiers, literal values. An ordinary word does not earn backticks
+  by being English. Wrapping every `agent` and `session` in prose turns the text
+  into a fence field and hides the marks that do carry meaning.
 - Preserve user changes and avoid unrelated edits.
 - Before non-trivial work in a workspace that contains child repositories,
   discover every `AGENTS.md` that applies to each repository in scope. Read the
