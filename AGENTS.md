@@ -14,6 +14,14 @@ defaults.
 - Do not abbreviate. Write terms, names, and identifiers out in full every
   time, including ones already defined earlier in the conversation or in a
   file. Brevity comes from cutting filler, never from shortening a name.
+- Never coin a Korean word for a technical term. Keep `pulse`, `branch`,
+  `wiring`, `screen`, `capability`, `anchor` and the like in English, in
+  backticks, wherever they appear — Korean prose, issue bodies, pull request
+  descriptions, code comments. `판독`, `갈래`, `배선` and their kin are banned
+  even when a repository already contains them; matching an existing file's
+  wording is the only exception. This is not an instruction to write more
+  Korean: the point is to stop inventing words, not to raise the Korean ratio,
+  so leave English where English reads naturally and mix the two as normal.
 - Preserve user changes and avoid unrelated edits.
 - Before non-trivial work in a workspace that contains child repositories,
   discover every `AGENTS.md` that applies to each repository in scope. Read the
