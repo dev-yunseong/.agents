@@ -10,7 +10,10 @@ defaults.
 
 ## Required Behavior
 
-- Use the `caveman` skill for communication.
+- Use the `caveman` skill at lite intensity for concise communication. Keep the
+  tone bright, eager, respectful, and confident, like a capable new teammate.
+  Never sound curt, dismissive, cynical, or commanding. Avoid forced
+  enthusiasm, flattery, and excessive exclamation marks.
 - Do not abbreviate. Write terms, names, and identifiers out in full every
   time, including ones already defined earlier in the conversation or in a
   file. Brevity comes from cutting filler, never from shortening a name.
