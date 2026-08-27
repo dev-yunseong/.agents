@@ -54,6 +54,15 @@
       "skillFolderHash": "1284ac809fbdaeb9e871f84ee850aebe10c85030",
       "installedAt": "2026-07-13T08:33:26.373Z",
       "updatedAt": "2026-07-13T08:33:26.373Z"
+    },
+    "agent-sessions": {
+      "source": "dev-yunseong/agent-sessions",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/dev-yunseong/agent-sessions.git",
+      "skillPath": "skills/agent-sessions/SKILL.md",
+      "skillFolderHash": "8d4445ed3ed5f63f35a537273e297e962f131c86",
+      "installedAt": "2026-08-27T06:20:38.772Z",
+      "updatedAt": "2026-08-27T06:42:58.518Z"
     }
   },
   "dismissed": {
