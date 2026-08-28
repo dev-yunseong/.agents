@@ -41,6 +41,8 @@ defaults.
   subagent for each. Serial is the exception, not the default. Take it only when
   fewer than two safe tracks exist, and say which it was and why.
 - Follow `~/.agents/docs/workflow.md` for non-trivial work.
+- Follow `~/.agents/docs/subagent-model.md` whenever spawning a subagent,
+  so each one runs on the weakest model that can finish its task.
 - Follow `~/.agents/docs/coding-style.md` for code changes.
 - Apply `~/.agents/docs/performance.md` only when performance is relevant.
 

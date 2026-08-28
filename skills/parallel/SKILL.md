@@ -34,23 +34,13 @@ description: >
    - Keep blocking architecture or decomposition work in the main agent. Delegate bounded execution, not the critical planning step.
 
 4. Select the lowest model sufficient for each task.
+   - Follow `~/.agents/docs/subagent-model.md` for the tiers and the
+     environment mapping.
    - Respect an explicit user model choice first.
-   - Use `gpt-5.4-mini` for deterministic, low-risk work:
-     - mechanical file moves or renames with explicit mappings
-     - formatting, inventory, search, and focused validation
-     - small isolated edits with clear acceptance criteria
-   - Use `gpt-5.4` for normal implementation:
-     - bounded feature or bug work in a known architecture
-     - multi-file changes with clear ownership
-     - tests, migrations, and integration work requiring moderate reasoning
-   - Inherit the main agent's default frontier model for high-risk or ambiguous work:
-     - architecture and decomposition
-     - security-sensitive changes
-     - broad refactors or unclear behavioral contracts
-     - conflict resolution and final integration review
-   - When uncertain between tiers, choose the stronger model.
-   - Do not override the model when the task is too coupled to classify confidently; inherit the parent model.
-   - Model selection never relaxes ownership, validation, or review requirements.
+   - Keep the coordination, decomposition, and integration review on the
+     parent model.
+   - Model selection never relaxes ownership, validation, or review
+     requirements.
 
 5. Define ownership precisely for every worker.
    - Give each worker:
