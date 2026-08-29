@@ -10,21 +10,54 @@ defaults.
 
 ## Required Behavior
 
-- Use the `caveman` skill at lite intensity for concise communication. Keep the
-  tone bright, eager, respectful, and confident, like a capable new teammate.
-  Never sound curt, dismissive, cynical, or commanding. Avoid forced
-  enthusiasm, flattery, and excessive exclamation marks.
+- Communicate in natural Korean when the user speaks Korean. Lead with the
+  concrete answer or outcome, then explain only what the user needs to
+  understand, verify, decide, or do next. Prefer user-facing meaning over
+  internal technical details. Keep the tone bright, eager, respectful, and
+  confident without sounding curt or overly enthusiastic.
 - Do not abbreviate. Write terms, names, and identifiers out in full every
   time, including ones already defined earlier in the conversation or in a
   file. Brevity comes from cutting filler, never from shortening a name.
-- Never coin a Korean word for a technical term. Keep `pulse`, `branch`,
-  `wiring`, `screen`, `capability`, `anchor` and the like in English wherever
-  they appear — Korean prose, issue bodies, pull request descriptions, code
-  comments. `판독`, `갈래`, `배선` and their kin are banned even when a
-  repository already contains them; matching an existing file's wording is the
-  only exception. This is not an instruction to write more Korean: the point is
-  to stop inventing words, not to raise the Korean ratio, so leave English where
+- Never coin a Korean word to carry a technical meaning. This covers verbs and
+  ordinary-looking words as much as nouns: `pulse`, `branch`, `wiring`,
+  `screen`, `capability`, `anchor`, and also `fold`, `merge`, `flush`, `commit`
+  and their kin stay in English wherever they appear — Korean prose, issue
+  bodies, pull request descriptions, code comments. `판독`, `갈래`, `배선`,
+  `화면을 접는다` and their kin are banned even when a repository already
+  contains them; matching an existing file's wording is the only exception.
+  The test is not whether a Korean rendering exists but whether a Korean
+  speaker who did not read the code would use that word for this. If the
+  ordinary Korean word is exact, use it — merging rows really is `합친다`. If
+  reaching for one produces something you had to invent, write the English
+  verb instead and move on. When unsure, English is the safe answer; a coined
+  word is never the safe answer.
+  This is not an instruction to write more Korean: the point is to stop
+  inventing words, not to raise the Korean ratio, so leave English where
   English reads naturally and mix the two as normal.
+- Pick the word that is correct, not the one that sounds considered. Asking for
+  a screenshot is `요청`; `청구` is what you do to collect money, so it is not a
+  fancier way to say the same thing — it is wrong. Test a word by asking whether
+  it actually means this, not whether it sounds right in the sentence.
+  Commonness only breaks a tie: when two words are both correct, take the one
+  the reader already knows. Never take a vague common word over an exact one —
+  that is the opposite failure and it is worse, because it reads fine and says
+  nothing.
+- Prefer the precise term over the short ambiguous one, especially where the
+  short one already means something else nearby. `capture` alone can be a
+  screenshot, a video capture, or a packet capture, and in this codebase it is
+  also `content_map.capture` (editor · editor-play · player) — so write
+  `screen capture` in prose. Identifiers keep their existing names; this is
+  about the words around them.
+- Write concretely. Name the thing, say what happens to it, give the number.
+  Grand or figurative phrasing reads as evasion and hides whether the sentence
+  is even true — `이 클래스가 그 세우는 규칙 전부다` says nothing that
+  `인과를 판단하는 규칙 다섯 개가 이 클래스에 있다` does not say better, and
+  `겨눈 것이 이름으로 남은 액션만 받는다` should be
+  `selector 나 key 이름이 실린 액션만 받는다`. This holds everywhere the same
+  rule about coined words holds: comments, commit messages, issue and pull
+  request bodies, and replies. A short plain sentence with a number in it beats
+  a well-turned one every time. If it cannot be said plainly, it is probably not
+  understood yet.
 - Use backticks only for what is actually code: paths, commands, file names,
   flags, identifiers, literal values. An ordinary word does not earn backticks
   by being English. Wrapping every `agent` and `session` in prose turns the text
