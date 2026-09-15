@@ -63,6 +63,15 @@
       "skillFolderHash": "8d4445ed3ed5f63f35a537273e297e962f131c86",
       "installedAt": "2026-08-27T06:20:38.772Z",
       "updatedAt": "2026-08-27T06:42:58.518Z"
+    },
+    "dev-tool": {
+      "source": "dev-yunseong/dev-tool",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/dev-yunseong/dev-tool.git",
+      "skillPath": "skills/dev-tool/SKILL.md",
+      "skillFolderHash": "86760575ab46548e2391b5de63841e083a854065",
+      "installedAt": "2026-09-15T12:42:49.267Z",
+      "updatedAt": "2026-09-15T12:42:49.267Z"
     }
   },
   "dismissed": {
