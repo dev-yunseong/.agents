@@ -42,6 +42,17 @@ During implementation:
 4. Validate incrementally, with depth proportional to risk and blast radius.
 5. Review the complete diff before handoff.
 
+## Pull Requests
+
+- Open every pull request as a draft: `gh pr create --draft`.
+- Leave it in draft. The developer reads the change and runs `gh pr ready`.
+  An agent never marks a pull request ready for review and never merges it.
+- Say in the handoff what the developer should check before flipping it, and
+  name any validation that was skipped or unavailable.
+- One exception: a promotion or release pull request opened by a skill the user
+  invoked, which that same skill then merges, follows the skill. The
+  `deploy` skill's `main` into `deploy` pull request is the case this covers.
+
 ## Decision Rules
 
 - Add abstractions only when they remove demonstrated complexity or match an

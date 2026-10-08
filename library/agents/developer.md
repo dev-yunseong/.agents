@@ -85,13 +85,14 @@ Create and verify the PR using the file. Do not pass generated multiline content
 through `--body`:
 
 ```bash
-gh pr create --title "<≤70 chars>" --body-file /tmp/pr-body.md
-gh pr view <PR-number-or-URL> --json title,body,url
+gh pr create --draft --title "<≤70 chars>" --body-file /tmp/pr-body.md
+gh pr view <PR-number-or-URL> --json title,body,url,isDraft
 ```
 
-Confirm the remote title and body match the source file, remove the temporary
-file, then return the PR URL. If content is malformed, fix and verify it before
-reporting completion.
+Confirm the remote title and body match the source file and that `isDraft` is
+true, remove the temporary file, then return the PR URL. If content is
+malformed, fix and verify it before reporting completion. Leave the pull request
+in draft; the developer runs `gh pr ready` after reading it.
 
 ## Rules
 

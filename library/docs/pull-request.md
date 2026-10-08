@@ -56,6 +56,19 @@ API names, CLI commands, and error strings in their original form.
 Closes #123
 ```
 
+## Draft by Default
+
+Open every pull request as a draft, including one that is finished and passing.
+
+```bash
+gh pr create --draft --title "<title>" --body-file /tmp/pr-body.md
+```
+
+The developer reads the change and runs `gh pr ready`. An agent never marks a
+pull request ready for review and never merges one. State in the handoff what
+the developer should check before flipping it, and name any validation that was
+skipped or unavailable.
+
 ## Metadata
 
 Set assignee, label, and milestone when creating the PR, not afterwards. An
@@ -69,7 +82,7 @@ uses to find work, so it stalls without anyone noticing.
 - **Reviewer** — request explicitly rather than relying on default rules.
 
 ```bash
-gh pr create --title "<title>" --body-file /tmp/pr-body.md \
+gh pr create --draft --title "<title>" --body-file /tmp/pr-body.md \
   --assignee @me --label fix --reviewer <handle>
 ```
 
@@ -116,7 +129,7 @@ This prevents shell quoting, command substitution, and newline damage.
 Use a temporary file unless the repository requires the PR draft to be tracked:
 
 ```bash
-gh pr create --title "<title>" --body-file /tmp/pr-body.md
+gh pr create --draft --title "<title>" --body-file /tmp/pr-body.md
 ```
 
 After creation, read the remote PR back with `gh pr view` and confirm the title
@@ -127,7 +140,7 @@ successful verification.
 ## Review Rules
 
 - Keep PR focused on one coherent outcome.
-- Mark draft while known required work remains.
+- Leave it in draft until the developer marks it ready.
 - Respond to each actionable review comment.
 - Resolve threads only after change or explicit agreement.
 - Add new commits during review when history clarity matters.
@@ -135,6 +148,7 @@ successful verification.
 
 ## Merge Criteria
 
+- the developer has taken it out of draft
 - acceptance criteria satisfied
 - required checks pass
 - review approvals complete
