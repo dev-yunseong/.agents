@@ -19,15 +19,6 @@
       "installedAt": "2026-04-10T05:39:45.973Z",
       "updatedAt": "2026-07-13T08:31:09.133Z"
     },
-    "find-skills": {
-      "source": "vercel-labs/skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/vercel-labs/skills.git",
-      "skillPath": "skills/find-skills/SKILL.md",
-      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
-      "installedAt": "2026-04-10T05:39:55.644Z",
-      "updatedAt": "2026-07-13T08:31:09.898Z"
-    },
     "pushback": {
       "source": "dev-yunseong/pushback",
       "sourceType": "github",
@@ -45,15 +36,6 @@
       "skillFolderHash": "166040c027f7764d43df36abc5df0079bfc6394b",
       "installedAt": "2026-07-13T08:33:26.372Z",
       "updatedAt": "2026-07-13T08:33:26.372Z"
-    },
-    "caveman-compress": {
-      "source": "JuliusBrussee/caveman",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
-      "skillPath": "skills/caveman-compress/SKILL.md",
-      "skillFolderHash": "1284ac809fbdaeb9e871f84ee850aebe10c85030",
-      "installedAt": "2026-07-13T08:33:26.373Z",
-      "updatedAt": "2026-07-13T08:33:26.373Z"
     },
     "agent-sessions": {
       "source": "dev-yunseong/agent-sessions",
