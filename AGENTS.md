@@ -58,6 +58,15 @@ defaults.
   request bodies, and replies. A short plain sentence with a number in it beats
   a well-turned one every time. If it cannot be said plainly, it is probably not
   understood yet.
+- A title is a label, not a claim. This covers commit subjects, pull request
+  titles, Jira and GitHub issue summaries, and the headings inside a document
+  or a deck. Name the thing that changed and say what happened to it, and give
+  the number when there is one — `QA run 에 tool 호출 상한과 실행 시간 제한 적용`,
+  not `런은 agent 가 물어봐서 나아간다`. A title that states an insight instead
+  of an edit cannot be checked against the change it names, and one that reads
+  like a slide headline is the same failure as the figurative prose above.
+  End the title with a noun such as `적용`, `추가`, or `이동`, not with a
+  sentence ending such as `~한다`.
 - Use backticks only for what is actually code: paths, commands, file names,
   flags, identifiers, literal values. An ordinary word does not earn backticks
   by being English. Wrapping every `agent` and `session` in prose turns the text

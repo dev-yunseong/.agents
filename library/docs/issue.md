@@ -51,6 +51,20 @@ Read the repository's existing labels with `gh label list` before guessing.
 Creating a label that duplicates an existing one with different wording splits
 the boards it was meant to feed.
 
+## Title
+
+An issue title names the problem or the change, not a thesis about it. The same
+rule as a pull request title: name the thing, say what happens to it, give the
+number, and never write a title a reader has to interpret.
+
+- An Epic names the outcome — `QA run 결과 재생 지원`
+- A Story names the behavior that changes — `QA agent context 에 pulse 추가`
+- A repository issue names what that repository does about it —
+  `SceneMemory 에 pulse 프레임 누적`
+
+An aphorism, a figure of speech, or a rhetorical question is not a title. If it
+reads like a slide headline rather than a work item, rewrite it.
+
 ## Language
 
 Write the title and body in Korean. Keep code identifiers, API names, CLI
