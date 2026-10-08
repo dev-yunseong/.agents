@@ -4,6 +4,24 @@
 
 Keep work incremental, reviewable, and aligned with existing architecture.
 
+## Repository-Local Instructions
+
+Every repository carries its own rules, and they take precedence over these
+defaults.
+
+1. Before the first edit in a repository, read its `AGENTS.md` and `CLAUDE.md`,
+   then every more specific file along the paths you will change, then the
+   documents those files require.
+2. Read that repository's installed skills and use the ones that cover the
+   task. A project skill holds the commands, scripts, and constraints that
+   repository actually runs on, so skipping it means guessing at them.
+3. Repeat both steps in every repository you enter. A workspace of submodules
+   holds one instruction set per submodule, and the parent workspace file does
+   not replace them.
+4. Do not assume another agent already did this. Some agents load neither the
+   repository's instructions nor its skills on their own, so check for yourself
+   and name the files and skills you read.
+
 ## Non-Trivial Work
 
 Before editing:
