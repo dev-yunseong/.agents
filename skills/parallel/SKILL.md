@@ -42,7 +42,29 @@ description: >
    - Model selection never relaxes ownership, validation, or review
      requirements.
 
-5. Define ownership precisely for every worker.
+5. Choose the engine for each worker.
+   - Route by cost first, following the engine routing in
+     `~/.agents/docs/subagent-model.md`. The CLIs draw on separate accounts, so
+     a track sent to one does not spend the Claude budget. Keep decomposition
+     and integration in Claude and send the bounded execution out.
+   - `codex exec` takes a track that has to run commands. It edits files,
+     runs shell commands, and reports back. `--cd <worktree>` sets its
+     working root, `-m` its model,
+     `-c model_reasoning_effort="low|medium|high"` its depth, `--json` a JSONL
+     event stream, and `--output-last-message <file>` just the final answer.
+   - `agy -p "<prompt>"` takes the rest. It reads and edits files, but a shell
+     command only runs when its prefix is listed in `permissions.allow` in
+     `~/.gemini/antigravity-cli/settings.json`; anything else is refused with
+     no output, so do not give an agy worker a track that has to build or
+     test. It does not inherit the working directory: pass `--add-dir
+     <worktree>` or it runs somewhere else entirely.
+   - Neither CLI is confined on this machine. Their `--sandbox` flags do not
+     stop a write outside the worktree, and codex's automatic review does not
+     refuse a destructive command. Give these workers a throwaway worktree,
+     read the diff before integrating, and never point one at a checkout whose
+     loss would cost something.
+
+6. Define ownership precisely for every worker.
    - Give each worker:
      - the exact issue or subtask
      - the files or module boundaries it owns
@@ -53,12 +75,12 @@ description: >
      - tests run
      - unresolved risks or assumptions
 
-6. Integrate deliberately.
+7. Integrate deliberately.
    - While workers run, do non-overlapping work locally: shared analysis, follow-up issue reads, integration prep, or validation setup.
    - Review returned diffs before making further edits.
    - If worker outputs collide in practice, resolve conflicts in the main agent instead of bouncing the same file between workers.
 
-7. Validate at the right level.
+8. Validate at the right level.
    - Prefer targeted tests per track first, then run broader validation after integration.
    - If one parallel track fails, do not block the others from landing unless the failure invalidates shared assumptions.
 
@@ -69,3 +91,6 @@ description: >
 - Prefer issue-level parallelism over file-level micro-splitting.
 - When a single issue contains multiple independent concerns, decompose into explicit subtracks before spawning workers.
 - Always explain the chosen partition and model assignment briefly before spawning workers.
+- Say which engine each worker runs on when any of them is not a Claude subagent.
+- A codex or agy worker cannot be messaged while it runs. Give it everything it
+  needs up front; a follow-up only lands after it has finished.
