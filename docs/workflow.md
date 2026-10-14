@@ -42,6 +42,31 @@ During implementation:
 4. Validate incrementally, with depth proportional to risk and blast radius.
 5. Review the complete diff before handoff.
 
+## Worktrees
+
+Keep every git worktree in one place under the root of the workspace you are
+working in, so they can be found and removed later.
+
+- In a single repository, create a worktree at `./.worktrees/<name>`.
+- In a workspace whose repositories are submodules, create every worktree at
+  `./.worktrees/<repo-name>/<name>` under the workspace root. `<repo-name>` is
+  the submodule's directory name, such as `artel-home`. A worktree of the
+  workspace repository itself uses the workspace directory name, such as
+  `./.worktrees/artel/<name>`.
+- Never create a worktree anywhere else: not beside the repository
+  (`../repo-name-x`), not in the workspace root (`./repo-name-x`), not inside a
+  submodule (`./repo-name/.worktrees/x`), not in a shared folder such as
+  `~/dev/worktrees`, and not in a scratchpad or `/tmp` directory.
+- Name the worktree after the issue key, such as `ARTEL-1030`, or a short slug
+  of the branch when there is no issue.
+- Pass an absolute path to `git worktree add`. `git -C <submodule>` resolves a
+  relative path against the submodule directory, not the workspace root.
+- Before the first worktree in a repository, confirm `.worktrees/` is ignored
+  with `git check-ignore .worktrees/x`. If it is not, add `.worktrees/` to
+  `.git/info/exclude` rather than to the tracked `.gitignore`.
+- Remove a worktree with `git worktree remove` once its pull request is merged
+  or closed. Before removing one, stash or commit its uncommitted changes.
+
 ## Pull Requests
 
 - Open every pull request as a draft: `gh pr create --draft`.

@@ -63,6 +63,9 @@ description: >
      refuse a destructive command. Give these workers a throwaway worktree,
      read the diff before integrating, and never point one at a checkout whose
      loss would cost something.
+   - Create every worker's worktree where the `## Worktrees` section of
+     `~/.agents/docs/workflow.md` says, and remove it once its pull request is
+     merged or closed.
 
 6. Define ownership precisely for every worker.
    - Give each worker:
