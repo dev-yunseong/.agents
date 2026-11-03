@@ -6,18 +6,18 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
       "skillPath": "skills/caveman-commit/SKILL.md",
-      "skillFolderHash": "6ba13fa3503e9607eed8f94828b524510d83b7ef",
+      "skillFolderHash": "7b600195c1d3cdd277dc608c56384c86afb7ec11",
       "installedAt": "2026-04-10T05:39:45.550Z",
-      "updatedAt": "2026-07-13T08:31:06.786Z"
+      "updatedAt": "2026-11-03T00:39:49.500Z"
     },
     "caveman-review": {
       "source": "JuliusBrussee/caveman",
       "sourceType": "github",
       "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
       "skillPath": "skills/caveman-review/SKILL.md",
-      "skillFolderHash": "2d9762b7aec395b9713fde57fb8965bc3bbd2c3f",
+      "skillFolderHash": "515d07fbd383fb9a15ad94647d133f681dc56197",
       "installedAt": "2026-04-10T05:39:45.973Z",
-      "updatedAt": "2026-07-13T08:31:09.133Z"
+      "updatedAt": "2026-11-03T00:39:49.567Z"
     },
     "pushback": {
       "source": "dev-yunseong/pushback",
@@ -27,15 +27,6 @@
       "skillFolderHash": "a9a45c8d092779f03b4441b0163c2ef14409a110",
       "installedAt": "2026-07-13T08:25:47.979Z",
       "updatedAt": "2026-07-13T08:25:47.979Z"
-    },
-    "caveman": {
-      "source": "JuliusBrussee/caveman",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
-      "skillPath": "skills/caveman/SKILL.md",
-      "skillFolderHash": "166040c027f7764d43df36abc5df0079bfc6394b",
-      "installedAt": "2026-07-13T08:33:26.372Z",
-      "updatedAt": "2026-07-13T08:33:26.372Z"
     },
     "agent-sessions": {
       "source": "dev-yunseong/agent-sessions",
@@ -51,9 +42,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/dev-yunseong/dev-tool.git",
       "skillPath": "skills/dev-tool/SKILL.md",
-      "skillFolderHash": "c425b507704e280ba1372921bacafc79aa268055",
+      "skillFolderHash": "d3d2c311e833f4096e659594b2bb4fcc57c21061",
       "installedAt": "2026-09-15T12:42:49.267Z",
-      "updatedAt": "2026-09-15T12:45:27.230Z"
+      "updatedAt": "2026-11-03T00:39:49.707Z"
     }
   },
   "dismissed": {
