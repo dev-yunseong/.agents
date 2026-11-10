@@ -83,6 +83,8 @@ defaults.
   subagent for each. Serial is the exception, not the default. Take it only when
   fewer than two safe tracks exist, and say which it was and why.
 - Follow `~/.agents/docs/workflow.md` for non-trivial work.
+- Follow [docs/hindsight.md](docs/hindsight.md) when installing, changing, or
+  diagnosing Hindsight; keep every environment on the shared `yunseong` bank.
 - Follow `~/.agents/docs/subagent-model.md` whenever spawning a subagent,
   so each one runs on the weakest model that can finish its task.
 - Follow `~/.agents/docs/coding-style.md` for code changes.
