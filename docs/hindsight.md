@@ -71,27 +71,8 @@ curl --fail http://home:8888/health
 `PATH`에 없을 수 있으므로, 진단 스크립트는 실제 NVM Node 실행 파일을
 지정하거나 NVM을 먼저 로드한다. 이것을 bank 설정 오류로 판단하지 않는다.
 
-## 2026-11-10 적용 기록
+## 적용 기록
 
-- 서버에 정확히 `yunseong`인 bank를 생성했다.
-- Windows의 디렉터리별 자동 ID와 `notes`, `.agents` 경로별 예외를 제거했다.
-- WSL Ubuntu에 Hindsight runtime `0.5.1`을 설치하고 Codex와 Claude Code를 연결했다.
-- `home`의 기존 `daemon` 설정을 공통 `self-hosted` 서버로 변경했다.
-- `home`의 `optInOnly: true`, 빈 허용 목록 제한을 해제했다.
-- 변경한 기존 설정 파일은 각 환경의 `.hindsight`에 백업했다.
-- Windows는 홈, `Documents/notes`, `.agents`에서 새 MCP 진단을 확인했다.
-- WSL과 `home`은 각각 홈, `/tmp`, `.agents`에서 새 MCP 진단을 확인했다.
-- 각 환경의 진단 결과가 `yunseong`과 `http://home:8888`로 일치했다.
-- 세 환경 모두 Claude Code의 `.claude.json`에 등록된 MCP 설정으로 실행해
-  `harness: claude-code`, `bank_id: yunseong`을 확인했다.
-- Claude Code의 `SessionStart`, `UserPromptSubmit`, `Stop` Hindsight hooks가
-  세 환경에 모두 등록되어 있음을 확인했다.
-- WSL과 `home`에서 서버 API로 `yunseong` bank의 존재를 확인했다.
-
-검증은 새로 실행한 MCP 프로세스와 서버 API를 기준으로 했다. 기존에 실행
-중이던 모든 에이전트를 재시작하거나, 실제 대화 한 건의 수집부터 검색까지
-전체 경로를 검증한 것은 아니다.
-
-과거 bank와 그 안의 메모리는 삭제하거나 옮기지 않았다. 이번 작업은 앞으로
-사용할 저장소의 통합이며, 과거 메모리의 통합은 별도 작업이다. 서버 생성
-직후 `yunseong`의 `fact_count`는 `0`이었다.
+2026-11-10에 Windows, WSL Ubuntu, `home`에서 새 MCP 프로세스가 공통 서버와
+`yunseong` bank를 사용하는지 확인했다. 기존 bank와 메모리는 보존했다.
+세부 적용 기록은 이 문서의 Git 이력에 있다.

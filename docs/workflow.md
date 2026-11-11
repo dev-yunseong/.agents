@@ -1,101 +1,45 @@
 # User-Level Workflow
 
-## Purpose
+## Changes
 
-Keep work incremental, reviewable, and aligned with existing architecture.
-
-## Repository-Local Instructions
-
-Every repository carries its own rules, and they take precedence over these
-defaults.
-
-1. Before the first edit in a repository, read its `AGENTS.md` and `CLAUDE.md`,
-   then every more specific file along the paths you will change, then the
-   documents those files require.
-2. Read that repository's installed skills and use the ones that cover the
-   task. A project skill holds the commands, scripts, and constraints that
-   repository actually runs on, so skipping it means guessing at them.
-3. Repeat both steps in every repository you enter. A workspace of submodules
-   holds one instruction set per submodule, and the parent workspace file does
-   not replace them.
-4. Do not assume another agent already did this. Some agents load neither the
-   repository's instructions nor its skills on their own, so check for yourself
-   and name the files and skills you read.
-
-## Non-Trivial Work
-
-Before editing:
-
-1. Confirm goal, scope, constraints, and current behavior.
-2. Inspect relevant code, tests, configuration, and recent changes.
-3. State a concise implementation plan.
-4. Explain architecture decisions, tradeoffs, and risk points.
-
-Use the `writing-plan` skill when a persistent plan file is useful or required
-by project instructions.
-
-During implementation:
-
-1. Make the smallest coherent change.
-2. Preserve established patterns unless the task requires changing them.
-3. Keep unrelated cleanup out of scope.
-4. Validate incrementally, with depth proportional to risk and blast radius.
-5. Review the complete diff before handoff.
+- Apply relevant installed skills.
+- For complex or risky changes, state the plan, key tradeoffs, and risks.
+  Use the writing-plan skill when a persistent plan is useful or required.
+- Keep changes focused, validate in proportion to risk, and review the diff.
+  Report failed, skipped, or unavailable checks.
 
 ## Worktrees
 
-Keep every git worktree in one place under the root of the workspace you are
-working in, so they can be found and removed later.
-
-- In a single repository, create a worktree at `./.worktrees/<name>`.
-- In a workspace whose repositories are submodules, create every worktree at
-  `./.worktrees/<repo-name>/<name>` under the workspace root. `<repo-name>` is
-  the submodule's directory name, such as `artel-home`. A worktree of the
-  workspace repository itself uses the workspace directory name, such as
-  `./.worktrees/artel/<name>`.
-- Never create a worktree anywhere else: not beside the repository
-  (`../repo-name-x`), not in the workspace root (`./repo-name-x`), not inside a
-  submodule (`./repo-name/.worktrees/x`), not in a shared folder such as
-  `~/dev/worktrees`, and not in a scratchpad or `/tmp` directory.
-- Name the worktree after the issue key, such as `ARTEL-1030`, or a short slug
-  of the branch when there is no issue.
-- Pass an absolute path to `git worktree add`. `git -C <submodule>` resolves a
-  relative path against the submodule directory, not the workspace root.
-- Before the first worktree in a repository, confirm `.worktrees/` is ignored
-  with `git check-ignore .worktrees/x`. If it is not, add `.worktrees/` to
-  `.git/info/exclude` rather than to the tracked `.gitignore`.
-- Remove a worktree with `git worktree remove` once its pull request is merged
-  or closed. Before removing one, stash or commit its uncommitted changes.
+- Use `./.worktrees/<name>` in a single repository or
+  `./.worktrees/<repo-name>/<name>` in a workspace with submodules.
+  Use the issue key or a short branch slug for the name.
+- Pass an absolute path to `git worktree add`. Verify the path is ignored
+  with `git check-ignore` and use `.git/info/exclude` if needed.
+- Once the pull request closes or merges, preserve any local changes before
+  removing its worktree with `git worktree remove`.
 
 ## Pull Requests
 
-- Open every pull request as a draft: `gh pr create --draft`.
-- Leave it in draft. The developer reads the change and runs `gh pr ready`.
-  An agent never marks a pull request ready for review and never merges it.
-- Say in the handoff what the developer should check before flipping it, and
-  name any validation that was skipped or unavailable.
-- One exception: a promotion or release pull request opened by a skill the user
-  invoked, which that same skill then merges, follows the skill. The
-  `deploy` skill's `main` into `deploy` pull request is the case this covers.
+- Open pull requests with `gh pr create --draft`. Leave readiness and merge
+  to the developer, and report remaining checks in the handoff.
+- A user-invoked release or promotion skill may merge its own pull request
+  when that is part of the skill's workflow.
 
-## Decision Rules
+## Coding Style
 
-- Add abstractions only when they remove demonstrated complexity or match an
-  established pattern.
-- Prefer deterministic behavior and explicit dependencies.
-- Prefer reversible changes for high-risk behavior.
-- Never hide failed, skipped, or unavailable validation.
-- Stop before destructive or high-impact ambiguous actions that lack approval.
+- Use domain names that reveal intent and verbs for actions. Keep functions
+  focused and control flow shallow.
+- Make dependencies and side effects explicit. Prefer deterministic behavior
+  and clear module boundaries.
+- Refactor incrementally. Preserve behavior and architecture unless the task
+  calls for a change. Keep unrelated formatting and cleanup out of the diff.
+- Comment on constraints and decisions the code cannot explain on its own.
 
-## Communication
+## Performance
 
-- Explain why before implementation details.
-- State tradeoffs, risks, validation performed, and anything not verified.
-- Keep responses concise.
-- Prefer file references or focused excerpts over large code dumps.
-
-## Outcome
-
-Optimize for maintainability, clarity, scalability, reliability, and real-world
-operation. Avoid temporary hacks, speculative complexity, and large rewrites
-without explicit need.
+- Measure the bottleneck first. Optimize when the expected impact matters at
+  the relevant scale.
+- Target the measured cause. For example, batch redundant queries, bound
+  concurrency, or define cache invalidation when adding a cache.
+- Compare before and after under equivalent conditions. Report the measured
+  gain and any readability, coupling, or operational tradeoffs.
