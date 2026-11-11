@@ -94,6 +94,10 @@ When GitHub CLI authentication appears invalid inside a sandbox but the user
 says their session is valid, request escalated execution and retry with the
 user's session credentials before asking them to re-authenticate.
 
+## Pull Request Review Threads
+
+When addressing review feedback, push fixes to the pull request's branch, then resolve the threads those fixes address.
+
 ## Shared Resources
 
 - Planning: `~/.agents/library/skills/writing-plan/SKILL.md`
