@@ -1,33 +1,16 @@
 # Project Agent Instructions
 
-## Scope and Precedence
+For non-trivial changes, read [project context](.agents/docs/project.md) and
+[development workflow](.agents/docs/workflow.md). Follow repository-specific
+commands and instructions for the affected paths. Use applicable installed skills.
 
-This file is the repository-level entrypoint for coding agents.
+Read these references when doing the corresponding work:
 
-Read `.agents/docs/project.md` before non-trivial
-work. Repository-specific commands, constraints, and narrower instructions take
-precedence over these template defaults.
-
-## Project Workflow
-
-For non-trivial work, follow:
-
-- `.agents/docs/workflow.md`
-- `.agents/docs/testing.md`
-
-For tracked Git work, follow:
-
-- `.agents/docs/issue.md`
-- `.agents/docs/branch.md`
-- `.agents/docs/commit.md`
-- `.agents/docs/pull-request.md`
-
-Follow `.agents/docs/line-endings.md` when adding `.gitattributes`, normalizing
-line endings, or reviewing a diff where every line changed.
-
-For published releases, follow:
-
-- `.agents/docs/release.md`
-
-Use project-local skills when installed and applicable. Skill instructions
-define their own triggers, formats, and output paths.
+- [Testing](.agents/docs/testing.md) when planning or running validation.
+- [Issues](.agents/docs/issue.md) when creating or updating an issue.
+- [Branches](.agents/docs/branch.md) when creating or naming a branch.
+- [Commits](.agents/docs/commit.md) when preparing a commit.
+- [Pull requests](.agents/docs/pull-request.md) when opening or updating one.
+- [Line endings](.agents/docs/line-endings.md) when setting up normalization
+  or investigating a diff caused by line endings.
+- [Releases](.agents/docs/release.md) when preparing a published release.

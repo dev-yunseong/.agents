@@ -18,8 +18,8 @@ Non-trivial work:
 - cross-module refactor
 - user-facing workflow change
 
-Non-trivial work requires a concise plan. Use the `writing-plan` skill when it
-is installed.
+State a concise plan for complex or risky changes. Use the writing-plan skill
+when a persistent plan is useful or the repository requires one.
 
 ## End-to-End Flow
 
@@ -27,14 +27,13 @@ is installed.
 2. Read project context, relevant code, tests, and recent changes.
 3. Link or create an issue. Non-trivial development branches require one.
 4. Create a branch using the issue number.
-5. Write a concise implementation plan; use `writing-plan` when installed.
-6. Identify architecture impact, tradeoffs, risks, and rollback.
-7. Implement the smallest coherent change.
-8. Follow `testing.md`; use an installed testing skill when available.
-9. Review the complete diff for scope, correctness, and accidental churn.
-10. Commit coherent units using the commit convention.
-11. Open a PR with evidence and explicit remaining risk.
-12. Address review without hiding unresolved concerns.
+5. For complex or risky changes, record the plan, tradeoffs, risks, and rollback.
+6. Implement the smallest coherent change.
+7. Follow `testing.md`; use an installed testing skill when available.
+8. Review the complete diff for scope, correctness, and accidental churn.
+9. Commit coherent units using the commit convention.
+10. Open a PR with evidence and explicit remaining risk.
+11. Address review without hiding unresolved concerns.
 
 ## Change Rules
 
